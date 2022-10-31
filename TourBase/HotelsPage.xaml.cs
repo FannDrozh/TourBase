@@ -24,7 +24,7 @@ namespace TourBase
         public HotelsPage()
         {
             InitializeComponent();
-            DGridHotrls.ItemsSource = Entities.GetContext().Hotels.ToList();
+            DGridHotels.ItemsSource = Entities.GetContext().Hotels.ToList();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -39,7 +39,7 @@ namespace TourBase
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var hotelsForRemoving = DGridHotrls.SelectedItems.Cast<Hotel>().ToList();
+            var hotelsForRemoving = DGridHotels.SelectedItems.Cast<Hotel>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следующие {hotelsForRemoving.Count()} элементов?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
@@ -60,7 +60,7 @@ namespace TourBase
             if (Visibility == Visibility.Visible)
             {
                 Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGridHotrls.ItemsSource = Entities.GetContext().Hotels.ToList();
+                DGridHotels.ItemsSource = Entities.GetContext().Hotels.ToList();
             }
         }
     }
