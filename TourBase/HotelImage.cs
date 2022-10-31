@@ -14,8 +14,8 @@ namespace TourBase
     
     public partial class HotelImage
     {
-        public int id { get; set; }
-        public Nullable<int> HotelId { get; set; }
+        public int Id { get; set; }
+        public int HotelId { get; set; }
         public byte[] ImageSource { get; set; }
     
         public virtual Hotel Hotel { get; set; }

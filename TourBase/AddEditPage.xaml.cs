@@ -28,7 +28,7 @@ namespace TourBase
             if (selectedHotel != null)
                 _currentHotel = selectedHotel;
             DataContext = _currentHotel;
-            ComboCountries.ItemsSource = ToursBase_BarashenkovEntities.GetContext().Country.ToList();
+            ComboCountries.ItemsSource = Entities.GetContext().Countries.ToList();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -45,11 +45,11 @@ namespace TourBase
                 MessageBox.Show(errors.ToString());
                 return;
             }
-            if (_currentHotel.id == 0)
-                ToursBase_BarashenkovEntities.GetContext().Hotels.Add(_currentHotel);
+            if (_currentHotel.Id == 0)
+                Entities.GetContext().Hotels.Add(_currentHotel);
             try
             {
-                ToursBase_BarashenkovEntities.GetContext().SaveChanges();
+                Entities.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена!");
             }
             catch (Exception ex)

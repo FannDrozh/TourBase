@@ -16,17 +16,19 @@ namespace TourBase
     {
         public Hotel()
         {
-            this.Tour = new HashSet<Tour>();
+            this.HotelComments = new HashSet<HotelComment>();
+            this.HotelImages = new HashSet<HotelImage>();
+            this.Tours = new HashSet<Tour>();
         }
     
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int CountOfStars { get; set; }
         public string CountryCode { get; set; }
     
         public virtual Country Country { get; set; }
-        public virtual HotelImage HotelImage { get; set; }
-        public virtual HotelComment HotelComment { get; set; }
-        public virtual ICollection<Tour> Tour { get; set; }
+        public virtual ICollection<HotelComment> HotelComments { get; set; }
+        public virtual ICollection<HotelImage> HotelImages { get; set; }
+        public virtual ICollection<Tour> Tours { get; set; }
     }
 }

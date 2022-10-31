@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Resources;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,7 +24,7 @@ namespace TourBase
         public HotelsPage()
         {
             InitializeComponent();
-            DGridHotrls.ItemsSource=ToursBase_BarashenkovEntities.GetContext().Hotels.ToList();
+            DGridHotrls.ItemsSource = Entities.GetContext().Hotels.ToList();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -39,16 +40,15 @@ namespace TourBase
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             var hotelsForRemoving = DGridHotrls.SelectedItems.Cast<Hotel>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить следующие {hotelsForRemoving.Count()} элементов?", "Внимание",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы точно хотите удалить следующие {hotelsForRemoving.Count()} элементов?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    ToursBase_BarashenkovEntities.GetContext().Hotels.RemoveRange(hotelsForRemoving);
-                    ToursBase_BarashenkovEntities.GetContext().SaveChanges();
+                    Entities.GetContext().Hotels.RemoveRange(hotelsForRemoving);
+                    Entities.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалены!");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
@@ -59,9 +59,10 @@ namespace TourBase
         {
             if (Visibility == Visibility.Visible)
             {
-                ToursBase_BarashenkovEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGridHotrls.ItemsSource = ToursBase_BarashenkovEntities.GetContext().Hotels.ToList();
+                Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGridHotrls.ItemsSource = Entities.GetContext().Hotels.ToList();
             }
         }
     }
+}
 

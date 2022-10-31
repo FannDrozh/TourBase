@@ -16,12 +16,12 @@ namespace TourBase
     {
         public Country()
         {
-            this.Hotel = new HashSet<Hotel>();
+            this.Hotels = new HashSet<Hotel>();
         }
     
         public string Code { get; set; }
         public string Name { get; set; }
     
-        public virtual ICollection<Hotel> Hotel { get; set; }
+        public virtual ICollection<Hotel> Hotels { get; set; }
     }
 }

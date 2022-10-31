@@ -13,30 +13,31 @@ namespace TourBase
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ToursBase_BarashenkovEntities : DbContext
+    public partial class Entities : DbContext
     {
-        private static ToursBase_BarashenkovEntities _context;
-        public ToursBase_BarashenkovEntities()
-            : base("name=ToursBase_BarashenkovEntities")
+        private static Entities _context;
+        public Entities()
+            : base("name=Entities")
         {
         }
-        public static ToursBase_BarashenkovEntities GetContext()
+        public static Entities GetContext()
         {
             if (_context == null)
-                _context = new ToursBase_BarashenkovEntities();
+                _context = new Entities();
             return _context;
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Country> Country { get; set; }
+        public DbSet<Country> Countries { get; set; }
         public DbSet<Hotel> Hotels { get; set; }
-        public DbSet<HotelComment> HotelComment { get; set; }
-        public DbSet<HotelImage> HotelImage { get; set; }
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public DbSet<Tour> Tour { get; set; }
-        public DbSet<Type> Type { get; set; }
+        public DbSet<HotelComment> HotelComments { get; set; }
+        public DbSet<HotelImage> HotelImages { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<Tour> Tours { get; set; }
+        public DbSet<Type> Types { get; set; }
     }
 }

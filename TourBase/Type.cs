@@ -16,13 +16,13 @@ namespace TourBase
     {
         public Type()
         {
-            this.Tour = new HashSet<Tour>();
+            this.Tours = new HashSet<Tour>();
         }
     
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<Tour> Tour { get; set; }
+        public virtual ICollection<Tour> Tours { get; set; }
     }
 }
