@@ -24,7 +24,7 @@ namespace TourBase
         public HotelsPage()
         {
             InitializeComponent();
-            DGridHotels.ItemsSource = Entities.GetContext().Hotels.ToList();
+            DGridHotels.ItemsSource = Entities1.GetContext().Hotels.ToList();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -44,8 +44,8 @@ namespace TourBase
             {
                 try
                 {
-                    Entities.GetContext().Hotels.RemoveRange(hotelsForRemoving);
-                    Entities.GetContext().SaveChanges();
+                    Entities1.GetContext().Hotels.RemoveRange(hotelsForRemoving);
+                    Entities1.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалены!");
                 }
                 catch (Exception ex)
@@ -59,8 +59,8 @@ namespace TourBase
         {
             if (Visibility == Visibility.Visible)
             {
-                Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGridHotels.ItemsSource = Entities.GetContext().Hotels.ToList();
+                Entities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGridHotels.ItemsSource = Entities1.GetContext().Hotels.ToList();
             }
         }
     }

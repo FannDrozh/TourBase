@@ -28,7 +28,7 @@ namespace TourBase
             if (selectedHotel != null)
                 _currentHotel = selectedHotel;
             DataContext = _currentHotel;
-            ComboCountries.ItemsSource = Entities.GetContext().Countries.ToList();
+            ComboCountries.ItemsSource = Entities1.GetContext().Countries.ToList();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -46,10 +46,10 @@ namespace TourBase
                 return;
             }
             if (_currentHotel.Id == 0)
-                Entities.GetContext().Hotels.Add(_currentHotel);
+                Entities1.GetContext().Hotels.Add(_currentHotel);
             try
             {
-                Entities.GetContext().SaveChanges();
+                Entities1.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена!");
             }
             catch (Exception ex)
